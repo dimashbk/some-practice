@@ -56,6 +56,9 @@
 		1D28A2CE297890BE006679B5 /* SomePractice */ = {
 			isa = PBXGroup;
 			children = (
+				1D28A2E829789E1E006679B5 /* Controller */,
+				1D28A2E629789E09006679B5 /* View */,
+				1D28A2E529789DFE006679B5 /* Model */,
 				1D28A2CF297890BE006679B5 /* AppDelegate.swift */,
 				1D28A2D1297890BE006679B5 /* SceneDelegate.swift */,
 				1D28A2D3297890BE006679B5 /* ViewController.swift */,
@@ -65,6 +68,27 @@
 				1D28A2E3297893F7006679B5 /* MyCollectionViewCell.swift */,
 			);
 			path = SomePractice;
+			sourceTree = "<group>";
+		};
+		1D28A2E529789DFE006679B5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D28A2E629789E09006679B5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1D28A2E829789E1E006679B5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
