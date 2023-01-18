@@ -1,0 +1,6 @@
+framework module Pods_SomePractice {
+  umbrella header "Pods-SomePractice-umbrella.h"
+
+  export *
+  module * { export * }
+}
