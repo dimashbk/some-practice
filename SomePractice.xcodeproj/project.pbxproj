@@ -12,6 +12,7 @@
 		1D28A2D4297890BE006679B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D28A2D3297890BE006679B5 /* ViewController.swift */; };
 		1D28A2D9297890BF006679B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D28A2D8297890BF006679B5 /* Assets.xcassets */; };
 		1D28A2DC297890BF006679B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D28A2DA297890BF006679B5 /* LaunchScreen.storyboard */; };
+		1D28A2E4297893F7006679B5 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D28A2E3297893F7006679B5 /* MyCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		1D28A2D8297890BF006679B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D28A2DB297890BF006679B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1D28A2DD297890BF006679B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1D28A2E3297893F7006679B5 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				1D28A2D8297890BF006679B5 /* Assets.xcassets */,
 				1D28A2DA297890BF006679B5 /* LaunchScreen.storyboard */,
 				1D28A2DD297890BF006679B5 /* Info.plist */,
+				1D28A2E3297893F7006679B5 /* MyCollectionViewCell.swift */,
 			);
 			path = SomePractice;
 			sourceTree = "<group>";
@@ -136,6 +139,7 @@
 			files = (
 				1D28A2D4297890BE006679B5 /* ViewController.swift in Sources */,
 				1D28A2D0297890BE006679B5 /* AppDelegate.swift in Sources */,
+				1D28A2E4297893F7006679B5 /* MyCollectionViewCell.swift in Sources */,
 				1D28A2D2297890BE006679B5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
