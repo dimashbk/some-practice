@@ -6,12 +6,13 @@
 //
 
 import UIKit
-
+import SnapKit
 class ViewController: UIViewController {
     let myCollection = UICollectionView()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
+        initialize()
     }
 
 
@@ -36,6 +37,10 @@ extension ViewController: UICollectionViewDelegate,UICollectionViewDataSource{
         myCollection.delegate = self
         myCollection.dataSource = self
         view.addSubview(myCollection)
+        myCollection.snp.makeConstraints{ maker in
+            maker.topMargin.bottomMargin.leftMargin.rightMargin.equalToSuperview().inset(10)
+            
+        }
         
         
     }
