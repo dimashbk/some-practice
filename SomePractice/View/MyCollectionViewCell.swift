@@ -7,20 +7,21 @@
 
 import UIKit
 
-class MyCollectionViewCell: UICollectionViewCell {
+class MyCollectionViewCell: UITableViewCell {
     static let identifier = "MyCollectionViewCell"
-    var imageView = UIImageView()
+    
     
     var photo: Photo!{
         didSet{
-            self.imageView.setImage(imageUrl: self.photo.url)
+            self.imageView!.setImage(imageUrl: self.photo.url)
         }
     }
     
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-            }
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        initialize()
+    }
+ 
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -30,8 +31,9 @@ class MyCollectionViewCell: UICollectionViewCell {
 
 extension MyCollectionViewCell{
     private func initialize(){
-        
+        var imageView = UIImageView()
+        self.addSubview(imageView)
 
         imageView.frame = self.contentView.bounds
-    }
+            }
 }
