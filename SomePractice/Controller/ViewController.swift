@@ -10,10 +10,12 @@ import SnapKit
 import Alamofire
 class ViewController: UIViewController {
     private var photos: [Photo] = []
-    private let url = "https://jsonplaceholder.typicode.com/"
+    var myCollection = UICollectionView(frame: .zero,collectionViewLayout: UICollectionViewFlowLayout())
+    private let url = "https://jsonplaceholder.typicode.com/photos"
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
+        self.fetchData()
     }
 
 
@@ -22,12 +24,12 @@ class ViewController: UIViewController {
 extension ViewController: UICollectionViewDelegate,UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCollectionViewCell.identifier, for: indexPath) as? MyCollectionViewCell{
-            itemCell.photo = self.photos[indexPath.item]
+            itemCell.photo = self.photos[indexPath.row]
             return itemCell
         }
 
@@ -42,7 +44,7 @@ extension ViewController: UICollectionViewDelegate,UICollectionViewDataSource{
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         
-        let myCollection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        myCollection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         myCollection.delegate = self
         myCollection.dataSource = self
         myCollection.frame = view.bounds
@@ -57,8 +59,9 @@ extension ViewController: UICollectionViewDelegate,UICollectionViewDataSource{
 }
 extension ViewController{
     private func fetchData(){
-        AF.request(self.url + "/photos", method: .get).responseDecodable(of: [Photo].self){ [weak self](response) in
+        AF.request(self.url , method: .get).responseDecodable(of: [Photo].self){ [weak self](response) in
             self?.photos = response.value ?? []
+            self!.myCollection.reloadData()
         }
     }
 }

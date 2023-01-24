@@ -13,14 +13,13 @@ class MyCollectionViewCell: UICollectionViewCell {
     
     var photo: Photo!{
         didSet{
-            
+            self.imageView.setImage(imageUrl: self.photo.url)
         }
     }
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .systemRed
             }
     
     required init?(coder: NSCoder) {
