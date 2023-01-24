@@ -7,9 +7,10 @@
 
 import UIKit
 import SnapKit
+import Alamofire
 class ViewController: UIViewController {
-    
-    
+    private var photos: [Photo] = []
+    private let url = "https://jsonplaceholder.typicode.com/"
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
@@ -25,9 +26,12 @@ extension ViewController: UICollectionViewDelegate,UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCollectionViewCell.identifier, for: indexPath)
+        if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCollectionViewCell.identifier, for: indexPath) as? MyCollectionViewCell{
+            itemCell.photo = self.photos[indexPath.item]
+            return itemCell
+        }
 
-        return itemCell
+        return UICollectionViewCell()
         }
        
     
@@ -51,4 +55,8 @@ extension ViewController: UICollectionViewDelegate,UICollectionViewDataSource{
     
     
 }
-
+extension ViewController{
+    private func fetchData{
+        
+    }
+}
