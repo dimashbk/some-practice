@@ -56,7 +56,9 @@ extension ViewController: UICollectionViewDelegate,UICollectionViewDataSource{
     
 }
 extension ViewController{
-    private func fetchData{
-        
+    private func fetchData(){
+        AF.request(self.url + "/photos", method: .get).responseDecodable(of: [Photo].self){ [weak self](response) in
+            self?.photos = response.value ?? []
+        }
     }
 }
