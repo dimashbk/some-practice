@@ -8,10 +8,10 @@
 import UIKit
 import SnapKit
 class ViewController: UIViewController {
-    let myCollection = UICollectionView()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
         initialize()
     }
 
@@ -21,26 +21,30 @@ class ViewController: UIViewController {
 extension ViewController: UICollectionViewDelegate,UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? MyCollectionViewCell {
-            return itemCell
+        let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCollectionViewCell.identifier, for: indexPath)
+
+        return itemCell
         }
-        return UICollectionViewCell()
-    }
+       
     
     
     private func initialize(){
         
+
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        
+        let myCollection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         myCollection.delegate = self
         myCollection.dataSource = self
+        myCollection.frame = view.bounds
         view.addSubview(myCollection)
-        myCollection.snp.makeConstraints{ maker in
-            maker.topMargin.bottomMargin.leftMargin.rightMargin.equalToSuperview().inset(10)
-            
-        }
+        myCollection.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: MyCollectionViewCell.identifier)
+        
         
         
     }
