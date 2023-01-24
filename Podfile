@@ -7,5 +7,7 @@ target 'SomePractice' do
 
   # Pods for SomePractice
 pod 'SnapKit'
+pod 'Alamofire'
+pod 'Kingfisher'
 
 end
