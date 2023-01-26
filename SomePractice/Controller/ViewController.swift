@@ -18,15 +18,17 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         myTableView.delegate = self
         myTableView.dataSource = self
-        self.title = "sio"
-        
-        myTableView.register(MyCollectionViewCell.self, forCellReuseIdentifier: "Cell")
+        myTableView.register(MyTableViewCell.self, forCellReuseIdentifier: MyTableViewCell.identifier)
         myTableView.frame = view.bounds
         view.addSubview(myTableView)
-        myTableView.rowHeight = UITableView.automaticDimension
-        myTableView.estimatedRowHeight = 44
+        setConstraints()
         
-        
+    }
+    
+    private func setConstraints() {
+        myTableView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
     
     private func fetchData(){
@@ -81,14 +83,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let itemCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? MyCollectionViewCell{
+        
+        if let itemCell = tableView.dequeueReusableCell(withIdentifier: MyTableViewCell.identifier, for: indexPath) as? MyTableViewCell{
                     itemCell.photo = self.photos[indexPath.row]
                     return itemCell
-                }
+        }
         
-                return UITableViewCell()
-                }
+        return UITableViewCell()
     }
+}
     
     
     
