@@ -8,6 +8,7 @@
 import UIKit
 
 class MyTableViewCell: UITableViewCell {
+    
     var myImageView = UIImageView()
     var photo: Photo! {
         didSet{

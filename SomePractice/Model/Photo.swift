@@ -7,13 +7,15 @@
 
 import Foundation
 struct Photo: Codable {
-    let albumID, id: Int
+    let albumId, id: Int
     let title: String
-    let url, thumbnailURL: String
+    let url, thumbnailUrl: String
 
-    enum CodingKeys: String, CodingKey {
-        case albumID = "albumId"
-        case id, title, url
-        case thumbnailURL = "thumbnailUrl"
-    }
+//    enum CodingKeys: String, CodingKey {
+//        case albumId = "albumId"
+//        case id, title, url
+//        case thumbnailUrl = "thumbnailUrl"
+//    }
 }
+
+//typealias Photo = [PhotoElement]
