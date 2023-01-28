@@ -41,7 +41,7 @@ class ViewController: UIViewController {
             self?.myTableView.reloadData()
             
         }
-    }
+       
 }
 extension ViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
