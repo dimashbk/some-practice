@@ -65,8 +65,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
                 self.myTableView.refreshControl?.endRefreshing()
             }
             AF.request(self.url , method: .get).responseDecodable(of: [Photo].self){ [weak self] response in
-                self?.photos = response.value ?? []
+                self?.photos.append(contentsOf: response.value ?? [])
                 self?.myTableView.reloadData()
+                print(self?.photos.count)
                 
             }
         }
