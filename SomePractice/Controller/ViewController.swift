@@ -19,29 +19,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData()
-        myTableView.delegate = self
-        myTableView.dataSource = self
-        myTableView.register(MyTableViewCell.self, forCellReuseIdentifier: MyTableViewCell.identifier)
-        myTableView.frame = view.bounds
-        view.addSubview(myTableView)
+        initialize()
         setConstraints()
         
-        
     }
     
-    private func setConstraints() {
-        myTableView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-    }
-    
-    private func fetchData(){
-        AF.request(self.url , method: .get).responseDecodable(of: [Photo].self){ [weak self] response in
-            self?.photos = response.value ?? []
-            self?.myTableView.reloadData()
-            
-        }
-       
 }
 extension ViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -56,6 +38,40 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         }
         
         return UITableViewCell()
+    }
+    private func setConstraints() {
+        myTableView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
+    private func initialize()
+    {
+        myTableView.delegate = self
+        myTableView.dataSource = self
+        myTableView.register(MyTableViewCell.self, forCellReuseIdentifier: MyTableViewCell.identifier)
+        myTableView.frame = view.bounds
+        view.addSubview(myTableView)
+        myTableView.refreshControl = UIRefreshControl()
+        myTableView.refreshControl?.addTarget( self, action: #selector(refreshData), for: .valueChanged)
+        
+    }
+    @objc func refreshData(){
+        print("refreshed")
+        fetchData(refresh: true)
+    }
+    private func fetchData(refresh: Bool = false){
+        DispatchQueue.main.async {
+            if refresh{
+                self.myTableView.refreshControl?.endRefreshing()
+            }
+            AF.request(self.url , method: .get).responseDecodable(of: [Photo].self){ [weak self] response in
+                self?.photos = response.value ?? []
+                self?.myTableView.reloadData()
+                
+            }
+        }
+        
+        
     }
 }
     
